@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
           const {icon} = data.weather[0];
           const { temp } = data.main;
           //setting DOM elements from API
-        currentIconSet.innerHTML = `<img src="icons/${icon}.png"></img>`
+        currentIconSet.innerHTML = `<img src="animated/${icon}.svg"></img>`
           temperatureDegree.textContent = temp;
           temperatureDescription.textContent = description;
           locationTimeZone.textContent = name;
