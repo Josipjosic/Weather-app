@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
       long = position.coords.longitude;
       lat = position.coords.latitude;
 
-      const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=24a7f50459caa7188895d9a49ee45df0`;
+      const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=24a7f50459caa7188895d9a49ee45df0&units=metric`;
 
       fetch(api)
         .then((response) => {
@@ -26,25 +26,25 @@ window.addEventListener("load", () => {
           const { name } = data;
           const description = data.weather[0].description;
           const {icon} = data.weather[0];
-          const { humidity } = data.main;
+          const { temp } = data.main;
           //setting DOM elements from API
         currentIconSet.innerHTML = `<img src="icons/${icon}.png"></img>`
-          temperatureDegree.textContent = humidity;
+          temperatureDegree.textContent = temp;
           temperatureDescription.textContent = description;
           locationTimeZone.textContent = name;
 
         // formula for converting cels 
 
-        let cels = (humidity - 32) * (5/9);
+        let cels = (temp + 32) * (9/5);
 
         // change temp on click
         degreeSection.addEventListener('click', () => {
-            if(temperatureSpan.textContent === 'F'){
-                temperatureSpan.textContent = 'C';
+            if(temperatureSpan.textContent === 'C'){
+                temperatureSpan.textContent = 'F';
                 temperatureDegree.textContent = Math.floor(cels);
             }else {
-                temperatureSpan.textContent = 'F';
-                temperatureDegree.textContent = humidity
+                temperatureSpan.textContent = 'C';
+                temperatureDegree.textContent = temp
             }
         })
 
