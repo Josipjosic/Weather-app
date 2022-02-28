@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
           //setting DOM elements from API
         currentIconSet.innerHTML = `<img src="animated/${icon}.svg"></img>`
           temperatureDegree.textContent = temp;
-          temperatureDescription.textContent = description;
+          temperatureDescription.textContent = description.charAt(0).toUpperCase() + description.slice(1) ;
           locationTimeZone.textContent = name;
 
         // formula for converting cels 
